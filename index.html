@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BrightSmile Dental Clinic — book dentist appointments online. Gentle care, modern tech, instant confirmations." />
+  <title>BrightSmile Dental Clinic</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#" class="brand">
+        <img src="assets/logo.svg" alt="BrightSmile" class="brand-logo" />
+        <span>BrightSmile</span>
+      </a>
+      <nav class="links" id="navLinks">
+        <a href="#services">Services</a>
+        <a href="#team">Team</a>
+        <a href="#testimonials">Reviews</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <button class="btn btn-primary btn-sm" id="openBooking">Book Now</button>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="bg-blur"></div>
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <h1>
+          Gentle dental care, <span class="accent-underline">booked in seconds</span>.
+        </h1>
+        <p>Modern equipment, painless procedures, and friendly dentists. Reserve your visit instantly—no phone calls needed.</p>
+        <div class="cta-row">
+          <button class="btn btn-primary" id="ctaBook">Book an Appointment</button>
+          <a href="#services" class="btn btn-ghost">Explore Services</a>
+        </div>
+        <div class="trust-badges">
+          <div class="badge"><img src="assets/icon-check.svg" alt=""><span>Instant Confirmation</span></div>
+          <div class="badge"><img src="assets/icon-star.svg" alt=""><span>4.9/5 Patient Rating</span></div>
+          <div class="badge"><img src="assets/icon-shield.svg" alt=""><span>ISO Sterilization</span></div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <div class="card-hero floating">
+          <img src="assets/hero-smile.svg" alt="Smiling patient" />
+        </div>
+        <div class="stats">
+          <div class="stat">
+            <strong>15k+</strong>
+            <span>Happy Patients</span>
+          </div>
+          <div class="stat">
+            <strong>12</strong>
+            <span>Years of Care</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Online Booking</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#services" class="scroll-indicator" aria-label="Scroll">
+      <span></span>
+    </a>
+  </section>
+
+  <section class="container section" id="services">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-sub">Comprehensive care for every smile.</p>
+    <div class="grid cards-3 reveal">
+      <article class="card service">
+        <img src="assets/svc-cleaning.svg" alt="Dental cleaning">
+        <h3>Cleaning &amp; Checkup</h3>
+        <p>Routine exams, deep cleaning, and preventive care to keep your teeth strong and healthy.</p>
+        <span class="chip">30–45 min</span>
+      </article>
+      <article class="card service">
+        <img src="assets/svc-whitening.svg" alt="Teeth whitening">
+        <h3>Teeth Whitening</h3>
+        <p>Safe, effective whitening for a brighter smile in just one visit.</p>
+        <span class="chip">60–90 min</span>
+      </article>
+      <article class="card service">
+        <img src="assets/svc-braces.svg" alt="Braces & aligners">
+        <h3>Braces & Aligners</h3>
+        <p>Straighten your teeth with traditional braces or clear aligners tailored to you.</p>
+        <span class="chip">Consultation</span>
+      </article>
+    </div>
+  </section>
+
+  <section class="section alt" id="team">
+    <div class="container">
+      <h2 class="section-title">Meet the Team</h2>
+      <p class="section-sub">Skilled, caring, and committed to comfort.</p>
+      <div class="grid team-grid reveal">
+        <div class="team-card">
+          <img src="assets/doc1.svg" alt="Dr. Ayesha Khan">
+          <div>
+            <h3>Dr. Ayesha Khan</h3>
+            <p>Cosmetic Dentist • 12 yrs</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <img src="assets/doc2.svg" alt="Dr. Omar Rahman">
+          <div>
+            <h3>Dr. Omar Rahman</h3>
+            <p>Orthodontist • 9 yrs</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <img src="assets/doc3.svg" alt="Dr. Sana Malik">
+          <div>
+            <h3>Dr. Sana Malik</h3>
+            <p>Pediatric Dentist • 7 yrs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="testimonials">
+    <h2 class="section-title">Patient Reviews</h2>
+    <p class="section-sub">Real stories from real smiles.</p>
+    <div class="carousel reveal" id="carousel">
+      <div class="carousel-track">
+        <div class="review-card">
+          <p>“The booking process took less than a minute and the staff was incredibly kind.”</p>
+          <div class="reviewer"><img src="assets/av1.svg" alt=""><span>Maryam I.</span></div>
+        </div>
+        <div class="review-card">
+          <p>“Best whitening I’ve had. Zero sensitivity and amazing results.”</p>
+          <div class="reviewer"><img src="assets/av2.svg" alt=""><span>Ali R.</span></div>
+        </div>
+        <div class="review-card">
+          <p>“My kid loved Dr. Sana. Gentle, patient, and fun!”</p>
+          <div class="reviewer"><img src="assets/av3.svg" alt=""><span>Hira A.</span></div>
+        </div>
+      </div>
+      <div class="carousel-controls">
+        <button class="btn-icon" id="prev">&#8249;</button>
+        <button class="btn-icon" id="next">&#8250;</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="pricing">
+    <div class="container">
+      <h2 class="section-title">Transparent Pricing</h2>
+      <p class="section-sub">No surprises—ever.</p>
+      <div class="grid pricing-grid reveal">
+        <div class="price-card">
+          <h3>Checkup</h3>
+          <p class="price">PKR 3,900</p>
+          <ul>
+            <li>Oral exam</li>
+            <li>Basic cleaning</li>
+            <li>X‑rays</li>
+          </ul>
+          <button class="btn btn-outline open-book">Book</button>
+        </div>
+        <div class="price-card featured">
+          <div class="ribbon">Popular</div>
+          <h3>Whitening</h3>
+          <p class="price">PKR 9,900</p>
+          <ul>
+            <li>60–90 min session</li>
+            <li>Zero sensitivity formula</li>
+            <li>Aftercare kit</li>
+          </ul>
+          <button class="btn btn-primary open-book">Book</button>
+        </div>
+        <div class="price-card">
+          <h3>Braces Consult</h3>
+          <p class="price">PKR 2,900</p>
+          <ul>
+            <li>Bite assessment</li>
+            <li>Treatment plan</li>
+            <li>Flexible financing</li>
+          </ul>
+          <button class="btn btn-outline open-book">Book</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section" id="contact">
+    <h2 class="section-title">Visit Us</h2>
+    <p class="section-sub">We’re easy to find and happy to help.</p>
+    <div class="grid contact-grid reveal">
+      <div class="contact-card">
+        <h3>Clinic</h3>
+        <p>32 Civic Center, Gulberg, Lahore</p>
+        <p><a href="tel:+924211234567">+92 42 112 345 67</a></p>
+        <p><a href="mailto:hello@brightsmile.clinic">hello@brightsmile.clinic</a></p>
+        <button class="btn btn-primary open-book">Book Now</button>
+      </div>
+      <div class="map-card">
+        <iframe title="Map" loading="lazy" src="https://maps.google.com/maps?q=Gulberg%20Lahore&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="ft-brand">
+        <img src="assets/logo.svg" alt="BrightSmile" />
+        <p>BrightSmile Dental Clinic — modern, gentle, and convenient.</p>
+      </div>
+      <div>
+        <h4>Hours</h4>
+        <ul>
+          <li>Mon–Sat: 9:00–20:00</li>
+          <li>Sun: Closed</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Links</h4>
+        <ul>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="appointments.html">Admin: Appointments</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">
+      <span>&copy; <span id="year"></span> BrightSmile Clinic</span>
+      <span class="made">Made with care &nbsp;🦷</span>
+    </div>
+  </footer>
+
+  <!-- Booking Modal -->
+  <div class="modal" id="bookingModal" aria-hidden="true" role="dialog" aria-labelledby="bookingTitle">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card">
+      <button class="close" data-close>&times;</button>
+      <h3 id="bookingTitle">Book Your Appointment</h3>
+      <form id="bookingForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Your name" required>
+            <small class="err"></small>
+          </div>
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="+92 3xx xxxxxxx" required pattern="^\+?\d[\d\s-]{7,}$">
+            <small class="err"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+            <small class="err"></small>
+          </div>
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service" required>
+              <option value="" selected disabled>Select a service</option>
+              <option>Cleaning & Checkup</option>
+              <option>Teeth Whitening</option>
+              <option>Braces Consultation</option>
+            </select>
+            <small class="err"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required>
+            <small class="err"></small>
+          </div>
+          <div class="field">
+            <label for="time">Time</label>
+            <select id="time" name="time" required>
+              <option value="" disabled selected>Select a time</option>
+            </select>
+            <small class="err"></small>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="notes">Notes (optional)</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Any concerns or preferences?"></textarea>
+        </div>
+
+        <div class="consent">
+          <label class="ck">
+            <input type="checkbox" id="policy" required>
+            <span></span>
+            I agree to the <a href="#" class="link">privacy policy</a>.
+          </label>
+        </div>
+
+        <button class="btn btn-primary btn-wide" type="submit">Confirm Booking</button>
+      </form>
+      <div class="toast" id="toast" role="status" aria-live="polite">Booking confirmed!</div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

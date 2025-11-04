@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointments • BrightSmile Clinic</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin { padding-top: 5rem; }
+    .admin h1 { font-size: 2rem; margin-bottom: 1rem; }
+    .toolbar { display:flex; gap:.75rem; flex-wrap:wrap; align-items:center; margin-bottom: .75rem; }
+    .table { width: 100%; border-collapse: collapse; background:#fff; border-radius: 1rem; overflow:hidden; box-shadow: var(--shadow-soft); }
+    .table th, .table td { padding: .9rem 1rem; border-bottom: 1px solid #edf2f7; text-align: left; font-size: .95rem; }
+    .table th { background: #f8fafc; font-weight: 700; }
+    .table tr:hover { background: #fcfcff; }
+    .status { font-size: .8rem; padding:.25rem .5rem; border-radius: 999px; }
+    .status.pending { background:#fff7ed; color:#9a3412; }
+    .status.confirmed { background:#ecfdf5; color:#065f46; }
+    .status.cancelled { background:#fef2f2; color:#991b1b; }
+    .empty { text-align:center; padding:2rem; color:#64748b; }
+    .export-note { font-size: .85rem; color:#64748b; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="index.html" class="brand">
+        <img src="assets/logo.svg" class="brand-logo" alt="BrightSmile"/>
+        <span>BrightSmile</span>
+      </a>
+      <nav class="links"><a href="index.html#services">Services</a><a href="index.html#contact">Contact</a></nav>
+    </div>
+  </header>
+
+  <main class="container admin">
+    <h1>Appointments</h1>
+    <div class="toolbar">
+      <button class="btn btn-outline" id="exportCsv">Export CSV</button>
+      <button class="btn btn-outline" id="clearAll">Clear All</button>
+      <span class="export-note">Data is stored locally in your browser (no server required).</span>
+    </div>
+    <div class="table-wrap">
+      <table class="table" id="apptTable">
+        <thead>
+          <tr>
+            <th>Name</th><th>Phone</th><th>Email</th><th>Service</th><th>Date</th><th>Time</th><th>Notes</th><th>Status</th><th></th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty" id="empty">No appointments yet.</div>
+    </div>
+  </main>
+
+  <script>
+    const key = 'brightsmile:appointments';
+    const tbody = document.querySelector('#apptTable tbody');
+    const empty = document.getElementById('empty');
+
+    function load() {
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      tbody.innerHTML = '';
+      if (!list.length) { empty.style.display='block'; return; }
+      empty.style.display='none';
+      list.forEach((r, i) => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = \`
+          <td>\${r.fullName}</td>
+          <td>\${r.phone}</td>
+          <td>\${r.email || '-'}</td>
+          <td>\${r.service}</td>
+          <td>\${r.date}</td>
+          <td>\${r.time}</td>
+          <td>\${r.notes || '-'}</td>
+          <td><span class="status \${r.status}">\${r.status[0].toUpperCase()+r.status.slice(1)}</span></td>
+          <td><button class="btn btn-sm btn-ghost danger" data-i="\${i}">Delete</button></td>
+        \`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    load();
+
+    tbody.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-i]');
+      if (!b) return;
+      const i = +b.dataset.i;
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      list.splice(i,1);
+      localStorage.setItem(key, JSON.stringify(list));
+      load();
+    });
+
+    document.getElementById('clearAll').addEventListener('click', () => {
+      if (confirm('Delete all appointments?')) {
+        localStorage.removeItem(key);
+        load();
+      }
+    });
+
+    document.getElementById('exportCsv').addEventListener('click', () => {
+      const list = JSON.parse(localStorage.getItem(key) || '[]');
+      if (!list.length) return alert('No data to export.');
+      const header = ['Full Name','Phone','Email','Service','Date','Time','Notes','Status'];
+      const rows = list.map(r => [r.fullName, r.phone, r.email||'', r.service, r.date, r.time, (r.notes||'').replaceAll('\n',' '), r.status]);
+      const csv = [header, ...rows].map(x => x.map(y => `"${(y+'').replaceAll('"','""')}"`).join(',')).join('\n');
+      const blob = new Blob([csv], {type:'text/csv'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'appointments.csv'; a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
